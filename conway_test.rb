@@ -42,12 +42,22 @@ class ConwayTest < Test::Unit::TestCase
     assert_equal(expected_state, actual_state)
   end
 
-  def test_rule_2
-
-  end
-
   def test_rule_3
-
+    initial_state = [
+      [false, false, false, false],
+      [false, true, false, false],
+      [false, true, true, false],
+      [false, false, false, true]
+    ]
+    expected_state = [
+      [false, false, false, false],
+      [false, true, false, false],
+      [false, true, true, false],
+      [false, false, false, false]
+    ]
+    @game.state = initial_state
+    actual_state = @game.next_state
+    assert_equal(expected_state, actual_state)
   end
 
   def test_rule_4
