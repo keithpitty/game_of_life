@@ -2,6 +2,12 @@ class Conway
   
   attr_accessor :state
   
+  #ALIVE_CHAR = "\u2665"
+  #DEAD_CHAR = "\u2620"
+  
+  ALIVE_CHAR = "*"
+  DEAD_CHAR = " "
+  
   def alive?(x, y)
     @state[x % @state.size][y % @state[0].size]
   end
@@ -60,14 +66,22 @@ class Conway
     (0...height).each do |y|
       (0...width).each do |x|
         if alive?(x,y)
-          result << '*'
+          result << ALIVE_CHAR
         else
-          result << ' '
+          result << DEAD_CHAR
         end
       end
       result << "\n"
     end
     result
+  end
+  
+  def __to_s
+    @state.map do |row|
+      row.map do |alive|
+        alive ? ALIVE_CHAR : DEAD_CHAR
+      end
+    end.flatten.join
   end
   
   private
